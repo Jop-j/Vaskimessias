@@ -110,8 +110,8 @@ floatPID pitchPID(&gxf, &pitch, 13.0, 0.0, 0.0, -(float)NORMALIZEDSERVO,(float)N
 floatPID rollPID(&gyf, &roll, 2.2, 0.0, 0.0, -(float)NORMALIZEDSERVO,(float)NORMALIZEDSERVO);   //INPUT is gyro
 floatPID yawPID(&gzf, &yaw, 10.0, 0.0, 0.0, -(float)NORMALIZEDSERVO,(float)NORMALIZEDSERVO);   //OUTPUT is stabliziation term for motors and servos in pitch, roll and yaw
 
-floatPID pitchAnglePID(&ypr[2], &pitchTarget, kp, ki, kd, -ratescale,ratescale);  //SETPOINT is wanted angle, from radio (stick input interpreted as this)
-floatPID rollAnglePID(&ypr[1], &rollTarget, -kp, -ki, -kd, -ratescale,ratescale);   //INPUT is angular orientation data from MPU sensor fusion
+floatPID pitchAnglePID(&ypr[2], &pitchTarget, 0.0, 0.0, 0.0, -ratescale,ratescale);  //SETPOINT is wanted angle, from radio (stick input interpreted as this)
+floatPID rollAnglePID(&ypr[1], &rollTarget, 2000.0, 0.0, 0.0, -ratescale,ratescale);   //INPUT is angular orientation data from MPU sensor fusion
                                                                                       // OUTPUT is rate command for inner loop PID
 
 void setup() {
